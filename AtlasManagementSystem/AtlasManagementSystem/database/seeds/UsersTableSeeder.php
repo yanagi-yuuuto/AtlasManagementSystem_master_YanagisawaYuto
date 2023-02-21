@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
                 'sex' => '1',
                 'birth_day' => '2000-01-01',
                 'role' => '1',
-                'password' => bcrypt('takahashitakumi')
+                'password' => 'takahashitakumi'
             ],
             [
                 'over_name' => '乾',
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
                 'sex' => '1',
                 'birth_day' => '2000-02-02',
                 'role' => '2',
-                'password' => bcrypt('inuiyusuke')
+                'password' => 'inuiyusuke'
             ],
             [
                 'over_name' => '渡辺',
@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder
                 'sex' => '1',
                 'birth_day' => '2000-03-03',
                 'role' => '3',
-                'password' => bcrypt('watanabeshusuke')
+                'password' => 'watanabeshusuke'
             ],
             [
                 'over_name' => '泉',
@@ -55,7 +55,7 @@ class UsersTableSeeder extends Seeder
                 'sex' => '2',
                 'birth_day' => '2000-04-04',
                 'role' => '4',
-                'password' => bcrypt('izumikana')
+                'password' => 'izumikana'
             ]
           ]);
     }
