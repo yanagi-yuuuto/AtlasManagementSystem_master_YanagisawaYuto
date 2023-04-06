@@ -31,6 +31,12 @@
               </div>
             </div>
           </div>
+      @if ($errors->has('over_name'))
+       <div style = "font-size: 12px; color: red; ">{{ $errors->first('over_name') }}</div>
+      @endif
+      @if ($errors->has('under_name'))
+       <div style = "font-size: 12px; color: red; ">{{ $errors->first('under_name') }}</div>
+      @endif
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
@@ -44,7 +50,13 @@
                 <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
               </div>
             </div>
-          </div>
+       </div>
+      @if ($errors->has('over_name_kana'))
+       <div style = "font-size: 12px; color: red; ">{{ $errors->first('over_name_kana') }}</div>
+      @endif
+      @if ($errors->has('under_name_kana'))
+       <div style = "font-size: 12px; color: red; ">{{ $errors->first('under_name_kana') }}</div>
+      @endif
           <div class="mt-3">
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
@@ -52,6 +64,9 @@
             </div>
           </div>
         </div>
+      @if ($errors->has('mail_address'))
+       <div style = "font-size: 12px; color: red; ">{{ $errors->first('mail_address') }}</div>
+      @endif
         <div class="mt-3">
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
@@ -60,17 +75,13 @@
           <input type="radio" name="sex" class="sex" value="3">
           <label style="font-size:13px">その他</label>
         </div>
+      @if ($errors->has('sex'))
+       <div style = "font-size: 12px; color: red; ">{{ $errors->first('sex') }}</div>
+      @endif
         <div class="mt-3">
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year">
             <option value="none">-----</option>
-            <option value="1985">1985</option>
-            <option value="1986">1986</option>
-            <option value="1987">1987</option>
-            <option value="1988">1988</option>
-            <option value="1989">1989</option>
-            <option value="1990">1990</option>
-            <option value="1991">1991</option>
             <option value="1992">1992</option>
             <option value="1993">1993</option>
             <option value="1994">1994</option>
@@ -142,8 +153,11 @@
             <option value="30">30</option>
             <option value="31">31</option>
           </select>
-          <label style="font-size:13px">月</label>
+          <label style="font-size:13px">日</label>
         </div>
+      @if ($errors->has('birth_day'))
+       <div style = "font-size: 12px; color: red; ">{{ $errors->first('birth_day') }}</div>
+      @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
@@ -164,6 +178,9 @@
           </div>
           @endforeach
         </div>
+      @if ($errors->has('role'))
+       <div style = "font-size: 12px; color: red; ">{{ $errors->first('role') }}</div>
+      @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
@@ -173,17 +190,20 @@
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">
-            <input type="password" class="border-0 w-100 password_confirmation" name="password">
+            <input type="password" class="border-0 w-100 password_confirmation" name="password_confirmation">
           </div>
         </div>
+      @if ($errors->has('password'))
+       <div style = "font-size: 12px; color: red; ">{{ $errors->first('password') }}</div>
+      @endif
         <div class="mt-5 text-right">
           <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録" onclick="return confirm('登録してよろしいですか？')">
         </div>
-        <div class="text-center">
+        <!-- <div class="text-center">
           <a href="{{ route('loginView') }}">ログイン</a>
-        </div>
+        </div> -->
+        {{ csrf_field() }}
       </div>
-      {{ csrf_field() }}
     </div>
   </form>
   </div>
