@@ -49,7 +49,7 @@ class RegisterFormRequest extends FormRequest
                 'under_name' => 'required|string|max:10',
                 'over_name_kana' => 'required|string|max:30|regex:/^[ァ-ヶー]+$/u',
                 'under_name_kana' => 'required|string|max:30|regex:/^[ァ-ヶー]+$/u',
-                'mail_address' => 'required|email|unique:users|max:100',
+                'mail_address' => 'required|email|unique:users,mail_address|max:100',
                 'sex' => 'required|numeric|in:1,2,3',
                 'birth_day' =>'required|after_or_equal:2000-01-01|before_or_equal:today',
                 'role' => 'required|numeric||in:1,2,3,4',
