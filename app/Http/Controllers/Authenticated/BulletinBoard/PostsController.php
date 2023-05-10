@@ -20,6 +20,7 @@ class PostsController extends Controller
 {
     public function show(Request $request){
         $posts = Post::with('user', 'postComments', 'sub_categories')->get();
+        $likes = Like::get();
         $categories = MainCategory::get();
         $sub_categories = SubCategory::with('posts')->get();
         $like = new Like;
@@ -42,7 +43,7 @@ class PostsController extends Controller
             $posts = Post::with('postComments')
             ->where('user_id', Auth::id())->get();
         }
-        return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment' ,'sub_categories'));
+        return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment' ,'sub_categories','likes'));
     }
 
     public function postDetail($post_id){
@@ -96,8 +97,6 @@ class PostsController extends Controller
         ]);
         return redirect()->route('post.input');
     }
-
-
 
     public function commentCreate(CommentCreateFormRequest $request){
         PostComment::create([

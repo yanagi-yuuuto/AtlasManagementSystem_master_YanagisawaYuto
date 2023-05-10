@@ -58,6 +58,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Posts\Post');
     }
 
+    public function likes(){
+        return $this->hasMany('App\Models\Posts\Like','like_user_id');
+    }
+
     public function calendars(){
         return $this->belongsToMany('App\Models\Calendars\Calendar', 'calendar_users', 'user_id', 'calendar_id')->withPivot('user_id', 'id');
     }
