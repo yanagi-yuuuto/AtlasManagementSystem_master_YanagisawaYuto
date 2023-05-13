@@ -9,10 +9,12 @@
           </div>
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
+            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してもよろしいですか？')">削除</a>
           </div>
         </div>
-
+       @foreach($post->sub_categories as $sub_category)
+        <p class="category_btn" style="width: fit-content;">{{ $sub_category->sub_category }}</p>
+       @endforeach
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
@@ -22,7 +24,13 @@
           <span class="ml-5">{{ $post->created_at }}</span>
         </div>
         <div class="detsail_post_title">{{ $post->post_title }}</div>
+         @if($errors->first('post_title'))
+          <span class="error_message">{{ $errors->first('post_title') }}</span>
+         @endif
         <div class="mt-3 detsail_post">{{ $post->post }}</div>
+         @if($errors->first('post_body'))
+          <span class="error_message">{{ $errors->first('post_body') }}</span>
+         @endif
       </div>
       <div class="p-3">
         <div class="comment_container">
