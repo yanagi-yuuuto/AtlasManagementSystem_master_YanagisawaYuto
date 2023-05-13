@@ -8,8 +8,10 @@
           <div>
           </div>
           <div>
+            @if(Auth::user()->id == $post->user_id)
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
             <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してもよろしいですか？')">削除</a>
+            @endif
           </div>
         </div>
        @foreach($post->sub_categories as $sub_category)
