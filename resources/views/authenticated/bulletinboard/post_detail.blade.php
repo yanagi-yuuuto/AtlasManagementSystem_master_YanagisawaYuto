@@ -9,13 +9,13 @@
           </div>
           <div>
             @if(Auth::user()->id == $post->user_id)
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してもよろしいですか？')">削除</a>
+            <span class="edit-modal-open btn btn-primary" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}" style="font-size: 0.7rem;">編集</span>
+            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('削除してもよろしいですか？')" class="btn btn-danger" style="font-size: 0.7rem;">削除</a>
             @endif
           </div>
         </div>
        @foreach($post->sub_categories as $sub_category)
-        <p class="category_btn" style="width: fit-content;">{{ $sub_category->sub_category }}</p>
+        <p class="category_btn btn-primary" style="width: fit-content;">{{ $sub_category->sub_category }}</p>
        @endforeach
         <div class="contributor d-flex">
           <p>
@@ -25,14 +25,14 @@
           </p>
           <span class="ml-5">{{ $post->created_at }}</span>
         </div>
-        <div class="detsail_post_title">{{ $post->post_title }}</div>
          @if($errors->first('post_title'))
-          <span class="error_message">{{ $errors->first('post_title') }}</span>
+          <span class="error_message" style ="font-size: 12px; color: red;">{{ $errors->first('post_title') }}</span>
+         @endif
+        <div class="detsail_post_title">{{ $post->post_title }}</div>
+         @if($errors->first('post_body'))
+          <span class="error_message" style ="font-size: 12px; color: red;">{{ $errors->first('post_body') }}</span>
          @endif
         <div class="mt-3 detsail_post">{{ $post->post }}</div>
-         @if($errors->first('post_body'))
-          <span class="error_message">{{ $errors->first('post_body') }}</span>
-         @endif
       </div>
       <div class="p-3">
         <div class="comment_container">
@@ -55,11 +55,11 @@
       <div class="comment_area p-3">
         <p class="m-0">コメントする</p>
           @if($errors->first('comment'))
-            <span class="error_message">{{ $errors->first('comment') }}</span>
+            <span class="error_message" style ="font-size: 12px; color: red;">{{ $errors->first('comment') }}</span>
           @endif
         <textarea class="w-100" name="comment" form="commentRequest"></textarea>
         <input type="hidden" name="post_id" form="commentRequest" value="{{ $post->id }}">
-        <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿">
+        <input type="submit" class="btn btn-primary" form="commentRequest" value="投稿" style="margin-left: 444px;">
         <form action="{{ route('comment.create') }}" method="post" id="commentRequest">{{ csrf_field() }}</form>
       </div>
     </div>
@@ -77,9 +77,9 @@
           <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
         </div>
         <div class="w-50 m-auto edit-modal-btn d-flex">
-          <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
+          <a class="js-modal-close btn btn-danger d-inline-block" href="" style="font-size:0.7rem">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
-          <input type="submit" class="btn btn-primary d-block" value="編集">
+          <input type="submit" class="btn btn-primary d-block" value="編集" style="font-size:0.7rem">
         </div>
       </div>
       {{ csrf_field() }}

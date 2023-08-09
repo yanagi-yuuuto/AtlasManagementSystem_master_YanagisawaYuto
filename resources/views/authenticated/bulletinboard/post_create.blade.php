@@ -19,14 +19,14 @@
     </div>
     <div class="mt-3">
       @if($errors->first('post_title'))
-      <span class="error_message">{{ $errors->first('post_title') }}</span>
+      <span class="error_message" style ="font-size: 12px; color: red;">{{ $errors->first('post_title') }}</span>
       @endif
       <p class="mb-0">タイトル</p>
       <input type="text" class="w-100" form="postCreate" name="post_title" value="{{ old('post_title') }}">
     </div>
     <div class="mt-3">
       @if($errors->first('post_body'))
-      <span class="error_message">{{ $errors->first('post_body') }}</span>
+      <span class="error_message" style ="font-size: 12px; color: red;">{{ $errors->first('post_body') }}</span>
       @endif
       <p class="mb-0">投稿内容</p>
       <textarea class="w-100" form="postCreate" name="post_body">{{ old('post_body') }}</textarea>
@@ -49,10 +49,13 @@
     </form>
    </div>
        @if ($errors->has('main_category_name'))
-       <div style = "font-size: 12px; color: red; ">{{ $errors->first('main_category_name') }}</div>
+       <div style ="font-size: 12px; color: red;">{{ $errors->first('main_category_name') }}</div>
       @endif
    <!-- サブカテゴリー追加 -->
    <div>
+    @if ($errors->has('sub_category_name'))
+      <div style ="font-size: 12px; color: red;">{{ $errors->first('sub_category_name') }}</div>
+    @endif
     <p class="m-0">サブカテゴリー</p>
     <form id="subCategoryRequest" method="POST" action="{{ route('sub.category.create') }}">{{ csrf_field() }}
       @csrf
@@ -65,9 +68,6 @@
       <input type="text" class="w-100" name="sub_category_name">
       <input type="submit" value="追加" class="w-100 btn btn-primary p-0">
     </form>
-      @if ($errors->has('sub_category_name'))
-       <div style = "font-size: 12px; color: red; ">{{ $errors->first('sub_category_name') }}</div>
-      @endif
    </div>
    </div>
     @endif

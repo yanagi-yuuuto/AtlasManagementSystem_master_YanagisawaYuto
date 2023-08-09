@@ -6,6 +6,11 @@
   padding: 0;
 }
 
+/* 追加 */
+label {
+  font-weight: bold;
+}
+
 /* body */
 .all_content {
   background: #ECF1F6;
@@ -30,6 +35,7 @@ li {
 
 .sidebar p a {
   color: #FFF;
+  text-decoration: none;
 }
 
 /* トップページ */

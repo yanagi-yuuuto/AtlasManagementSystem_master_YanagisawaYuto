@@ -6,12 +6,12 @@
     <p class="w-75 m-auto">投稿一覧</p>
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
-      <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
-      <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
+      <p style="font-size:0.75rem; color:gray;"><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
+      <p style="font-weight:bold;"><a href="{{ route('post.detail', ['id' => $post->id]) }}" style="color:#000;">{{ $post->post_title }}</a></p>
        @foreach($post->sub_categories as $sub_category)
-        <p class="category_btn" style="width: fit-content;">{{ $sub_category->sub_category }}</p>
+        <p class="category_btn btn-primary" style="width: fit-content;">{{ $sub_category->sub_category }}</p>
        @endforeach
-      <div class="post_bottom_area d-flex" style="justify-content: flex-end;">
+      <div class="post_bottom_area d-flex" style="justify-content: flex-end; color:gray;">
         <div class="d-flex post_status">
           <div class="mr-5">
             <i class="fa fa-comment"></i><span class="" style="font-size: 1rem;">{{ $post->postComments->count() }}</span>
@@ -33,14 +33,18 @@
     @endforeach
   </div>
   <div class="other_area border w-25">
-    <div class="border m-4">
-      <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
-      <div class="">
-        <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" value="検索" form="postSearchRequest">
-      </div>
-      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
-      <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
+    <div class="border m-2">
+      <div class=""><a href="{{ route('post.input') }}" class="btn btn-info btn-large" style="width:350px; margin-bottom:20px;" >投稿</a></div>
+    <div class="input-group" style="margin-bottom: 20px">
+      <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="キーワードを入力" form="postSearchRequest" style="font-size: 0.8rem;"></input>
+      <span class="input-group-btn input-group-append">
+       <submit type="submit" id="btn-search" class="btn btn-primary" form="postSearchRequest"><i class="fas fa-search"></i> 検索</submit>
+      </span>
+    </div>
+      <input type="submit" name="like_posts" class="category_btn btn btn-warning" value="いいねした投稿" form="postSearchRequest" style="font-size: 0.8rem;
+    width: 50%;">
+      <input type="submit" name="my_posts" class="category_btn btn btn-success" value="自分の投稿" form="postSearchRequest" style="font-size: 0.8rem;
+    width: 48%;">
       <ul>
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
