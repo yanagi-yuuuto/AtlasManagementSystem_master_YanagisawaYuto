@@ -48,16 +48,25 @@ class CalendarWeekDay{
        $three_part_frame = '0';
      }
 
-    if ($one_part_frame == "0" && $two_part_frame == "0" && $three_part_frame == "0") {
-      $html[] = '<p style="font-size:0.75rem;">受付終了</p>';
-    } else {
-      $html[] = '<select name="getPart[]" class="border-primary" style="width:70px; border-radius:5px;" form="reserveParts">';
-      $html[] = '<option value="" selected></option>';
-      $html[] = '<option value="1">リモ1部(残り'.$one_part_frame.'枠)</option>';
-      $html[] = '<option value="2">リモ2部(残り'.$two_part_frame.'枠)</option>';
-      $html[] = '<option value="3">リモ3部(残り'.$three_part_frame.'枠)</option>';
-      $html[] = '</select>';
-    }
+     $html = [];
+     $html[] = '<select name="getPart[]" class="border-primary" style="width:70px; border-radius:5px;" form="reserveParts">';
+     $html[] = '<option value="" selected></option>';
+     if($one_part_frame == "0"){
+       $html[] = '<option value="1" disabled>リモ1部(残り0枠)</option>';
+     }else{
+       $html[] = '<option value="1">リモ1部(残り'.$one_part_frame.'枠)</option>';
+     }
+     if($two_part_frame == "0"){
+       $html[] = '<option value="2" disabled>リモ2部(残り0枠)</option>';
+     }else{
+       $html[] = '<option value="2">リモ2部(残り'.$two_part_frame.'枠)</option>';
+     }
+     if($three_part_frame == "0"){
+       $html[] = '<option value="3" disabled>リモ3部(残り0枠)</option>';
+     }else{
+       $html[] = '<option value="3">リモ3部(残り'.$three_part_frame.'枠)</option>';
+     }
+     $html[] = '</select>';
      return implode('', $html);
    }
 

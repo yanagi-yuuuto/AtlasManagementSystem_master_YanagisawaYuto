@@ -47,7 +47,7 @@ class CalendarView{
         }
         $html[] = $day->render();
 
-        if(in_array($day->everyDay(), $day->authReserveDay())){
+        if(in_array($day->everyDay(), $day->authReserveDay())){  //予約している場合
           $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
           if($reservePart == 1){
             $reservePart = "リモ1部";
@@ -56,15 +56,26 @@ class CalendarView{
           }else if($reservePart == 3){
             $reservePart = "リモ3部";
           }
-          if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px"></p>';
+          if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){  //過去
+            if($reservePart == "リモ1部"){
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">1部参加</p>';
+            }else if($reservePart == "リモ2部"){
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">2部参加</p>';
+            }else if($reservePart == "リモ2部"){
+              $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">3部参加</p>';
+            }
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-          }else{
+          }else{  //未来
             $html[] = '<button type="submit" class="btn btn-danger p-0 w-75 cancel-modal-open" name="delete_date" style="font-size:12px" value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'">'. $reservePart .'</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
-        }else{
-          $html[] = $day->selectPart($day->everyDay());
+        }else{  //予約していていない場合
+          if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){  //過去
+           $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+           $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+          }else{ //未来
+           $html[] = $day->selectPart($day->everyDay());
+          }
         }
         $html[] = $day->getDate();
         $html[] = '</td>';
