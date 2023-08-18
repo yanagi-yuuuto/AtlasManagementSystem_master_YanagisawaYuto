@@ -36,7 +36,16 @@ class CalendarsController extends Controller
         return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 
-    public function delete(){
-    //  reserve_setting_usersテーブルからレコードを削除？
+    public function delete(Request $request){
+        $deleteDate = $request->input('delete_date');
+        $deletePart = $request->input('delete_part');
+        $userId = Auth::id();
+
+        $calendarRecord = ReserveSettings::where('setting_reserve', $deleteDate)
+            ->where('setting_part', $deletePart)
+            ->first();
+        $calendarRecord->users()->detach($userId);
+
+        return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
 }

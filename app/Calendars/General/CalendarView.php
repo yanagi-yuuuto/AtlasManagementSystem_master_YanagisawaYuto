@@ -97,8 +97,8 @@ class CalendarView{
     $html[] = '</div>';
     $html[] = '<div class="w-75 m-auto edit-modal-btn d-flex">';
     $html[] = '<a class="js-modal-close btn btn-primary d-inline-block" href="" style="font-size:0.7rem">閉じる</a>';
-    $html[] = '<input type="hidden" class="cancel-modal-hidden" name="delete_date" value="">';
-    $html[] = '<input type="hidden" class="cancel-modal-hidden" name="delete_part" value="">';
+    $html[] = '<input type="hidden" class="cancel-modal-hidden-date" name="delete_date" value="" form="deleteParts">';
+    $html[] = '<input type="hidden" class="cancel-modal-hidden-part" name="delete_part" value="" form="deleteParts">';
     $html[] = '<input type="submit" class="btn btn-danger d-block" value="キャンセル" form="deleteParts" style="font-size:0.7rem">';
     $html[] = '</div>';
     $html[] = '</div>';
