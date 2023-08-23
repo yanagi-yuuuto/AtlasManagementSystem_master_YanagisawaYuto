@@ -6,4 +6,9 @@ $(function () {
   $('.subject_edit_btn').click(function () {
     $('.subject_inner').slideToggle();
   });
+
+  $('.main_categories').click(function () {
+    var targetID = $(this).data('target');
+    $('#category-button-' + targetID).slideToggle();
+  });
 });

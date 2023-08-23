@@ -14,8 +14,8 @@
 </head>
 <body style="background: #ECF1F6;">
   <form action="{{ route('registerPost') }}" method="POST">
-    <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="w-25 vh-75 border p-3" style="background-color:#FFF;">
+    <div class="w-100 d-flex" style="align-items:center; justify-content:center; height:120vh;">
+      <div class="w-25 vh-75 border p-3" style="background-color:#FFF;  border-radius: 20px; box-shadow: 0 0 8px #929496;">
         <div class="register_form">
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
@@ -80,7 +80,7 @@
       @endif
         <div class="mt-3">
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
-          <select class="old_year" name="old_year">
+          <select class="old_year selectable-birthday" name="old_year">
             <option value="none">-----</option>
             <option value="1992">1992</option>
             <option value="1993">1993</option>
@@ -103,7 +103,7 @@
             <option value="2010">2010</option>
           </select>
           <label style="font-size:13px">年</label>
-          <select class="old_month" name="old_month">
+          <select class="old_month selectable-birthday" name="old_month">
             <option value="none">-----</option>
             <option value="01">1</option>
             <option value="02">2</option>
@@ -119,7 +119,7 @@
             <option value="12">12</option>
           </select>
           <label style="font-size:13px">月</label>
-          <select class="old_day" name="old_day">
+          <select class="old_day selectable-birthday" name="old_day">
             <option value="none">-----</option>
             <option value="01">1</option>
             <option value="02">2</option>
