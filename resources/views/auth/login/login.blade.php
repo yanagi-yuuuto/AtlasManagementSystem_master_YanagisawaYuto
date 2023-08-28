@@ -18,7 +18,7 @@
      <div>
        <img src="{{ asset('images/atlas-black.png')}}" style="margin: auto; width:165px; margin-bottom:26px;">
      </div>
-      <div class="border vh-50 w-25" style="background-color:#FFF; border-radius: 20px; box-shadow: 0 0 8px #929496;">
+      <div class="border vh-50 w-25 shadow" style="background-color:#FFF; border-radius: 20px;">
         <div class="w-75 m-auto pt-5">
           <label class="d-block m-0" style="font-size:13px;">メールアドレス</label>
           <div class="border-bottom border-primary w-100">

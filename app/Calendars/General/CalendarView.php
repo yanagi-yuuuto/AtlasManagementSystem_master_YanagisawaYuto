@@ -18,22 +18,22 @@ class CalendarView{
   function render(){
     $html = [];
     $html[] = '<div class="calendar text-center">';
-    $html[] = '<table class="table">';
+    $html[] = '<table class="table border ">';
     $html[] = '<thead>';
     $html[] = '<tr>';
-    $html[] = '<th>月</th>';
-    $html[] = '<th>火</th>';
-    $html[] = '<th>水</th>';
-    $html[] = '<th>木</th>';
-    $html[] = '<th>金</th>';
-    $html[] = '<th>土</th>';
-    $html[] = '<th>日</th>';
+    $html[] = '<th class="border" style="width:14%;">月</th>';
+    $html[] = '<th class="border" style="width:14%;">火</th>';
+    $html[] = '<th class="border" style="width:14%;">水</th>';
+    $html[] = '<th class="border" style="width:14%;">木</th>';
+    $html[] = '<th class="border" style="width:14%;">金</th>';
+    $html[] = '<th class="border" style="width:14%; color:blue;">土</th>';
+    $html[] = '<th class="border" style="width:14%; color:red;">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
     $weeks = $this->getWeeks();
     foreach($weeks as $week){
-      $html[] = '<tr class="'.$week->getClassName().'">';
+      $html[] = '<tr class="'.$week->getClassName().'" >';
 
       $days = $week->getDays();
       foreach($days as $day){
@@ -41,9 +41,9 @@ class CalendarView{
         $toDay = $this->carbon->copy()->format("Y-m-d");
 
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="calendar-td" style="background-color:#eee;>';
+          $html[] = '<td class="calendar-td border '.$day->getClassName().'" style="background-color:#eee;>';
         }else{
-          $html[] = '<td class="calendar-td '.$day->getClassName().'">';
+          $html[] = '<td class="calendar-td border '.$day->getClassName().'">';
         }
         $html[] = $day->render();
 
@@ -71,7 +71,7 @@ class CalendarView{
           }
         }else{  //予約していていない場合
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){  //過去
-           $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+           $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color:black;">受付終了</p>';
            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{ //未来
            $html[] = $day->selectPart($day->everyDay());

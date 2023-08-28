@@ -51,7 +51,7 @@
     <p style="font-size:0.8rem;">カテゴリー検索</p>
       <ul>
         @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}" style="color:black;" data-target ="{{ $category->id }}" ><span>{{ $category->main_category }}</span></li>
+        <li class="main_categories category_arrow_btn" category_id="{{ $category->id }}" style="color:black; position:relative;" data-target ="{{ $category->id }}" ><span>{{ $category->main_category }}</span><span class="category_arrow arrow_{{ $category->id }}"></span></li>
         <div id="category-button-{{ $category->id }}" style="display:none;">
           @foreach($sub_categories as $sub_category)
            @if($sub_category->main_category_id == $category->id)

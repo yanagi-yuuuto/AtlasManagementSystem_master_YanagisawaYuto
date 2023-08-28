@@ -4,7 +4,7 @@
 <div class="search_content w-100 d-flex mt-3">
   <div class="reserve_users_area">
     @foreach($users as $user)
-    <div class="one_person">
+    <div class="one_person shadow">
       <div>
         <span>ID : </span><span class="profile-data">{{ $user->id }}</span>
       </div>
@@ -73,7 +73,9 @@
         </select>
       </div>
       <div class="">
-        <p class="m-0 search_conditions mt-3" style="border-bottom: 1px solid black; width:350px;"><span>検索条件の追加</span></p>
+        <div class="arrow_btn" style="position:relative;">
+          <p class="m-0 search_conditions mt-3" style="border-bottom: 1px solid black; width:350px;"><span>検索条件の追加</span><span class="search_arrow arrow"></span></p>
+        </div>
         <div class="search_conditions_inner" style="background-color: #ecf1f6;">
           <div class="mt-3">
             <span>性別</span>

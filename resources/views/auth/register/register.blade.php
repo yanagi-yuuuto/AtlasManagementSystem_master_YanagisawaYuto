@@ -15,7 +15,7 @@
 <body style="background: #ECF1F6;">
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-100 d-flex" style="align-items:center; justify-content:center; height:120vh;">
-      <div class="w-25 vh-75 border p-3" style="background-color:#FFF;  border-radius: 20px; box-shadow: 0 0 8px #929496;">
+      <div class="w-25 vh-75 border p-3 shadow" style="background-color:#FFF;  border-radius: 20px;">
         <div class="register_form">
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
@@ -199,9 +199,9 @@
         <div class="mt-5 text-right">
           <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録" onclick="return confirm('登録してよろしいですか？')">
         </div>
-        <!-- <div class="text-center">
-          <a href="{{ route('loginView') }}">ログイン</a>
-        </div> -->
+        <div class="text-center mb-1 mt-3">
+          <a href="{{ route('loginView') }}" style="text-decoration: none; ">ログインはこちら</a>
+        </div>
         {{ csrf_field() }}
       </div>
     </div>

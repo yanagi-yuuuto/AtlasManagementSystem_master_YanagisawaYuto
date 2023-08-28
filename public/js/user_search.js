@@ -12,3 +12,14 @@ $(function () {
     $('#category-button-' + targetID).slideToggle();
   });
 });
+
+$(function () {
+  $('.arrow_btn').click(function () {
+    $(".arrow").toggleClass("upper");
+  });
+
+  $('.category_arrow_btn').click(function () {
+    var targetID = $(this).data('target');
+    $(".arrow_" + targetID).toggleClass("upper");
+  });
+});

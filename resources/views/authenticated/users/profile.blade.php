@@ -4,7 +4,7 @@
 <div class="vh-100 border">
   <div class="top_area w-75 m-auto pt-5">
     <span>{{ $user->over_name }}</span><span>{{ $user->under_name }}さんのプロフィール</span>
-    <div class="user_status p-3">
+    <div class="user_status p-3 shadow mt-3">
       <p>名前 : <span>{{ $user->over_name }}</span><span class="ml-1">{{ $user->under_name }}</span></p>
       <p>カナ : <span>{{ $user->over_name_kana }}</span><span class="ml-1">{{ $user->under_name_kana }}</span></p>
       <p>性別 : @if($user->sex == 1)<span>男</span>@else<span>女</span>@endif</p>
@@ -14,13 +14,15 @@
         <span>{{ $subject->subject }}</span>
         @endforeach
       </div>
-      <div class="mt-3">
+      <div class="mt-3" style="position:relative;">
         @can('admin')
-        <span class="subject_edit_btn">選択科目の登録</span>
+        <div class="subject_edit_btn arrow_btn">
+           <span >選択科目の登録</span><span class="subject_arrow arrow"></span>
+        </div>
         <div class="subject_inner" >
-          <form action="{{ route('user.edit') }}" method="post">
+          <form action="{{ route('user.edit') }}" method="post" style="display: flex;">
             @foreach($subject_lists as $subject_list)
-            <div>
+            <div class="subject_inner_box">
               <span>{{ $subject_list->subject }}</span>
               <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
             </div>
