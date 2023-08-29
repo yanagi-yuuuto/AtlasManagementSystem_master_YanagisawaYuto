@@ -99,8 +99,9 @@ tbody tr:nth-child(odd) {
   content: "";
   margin: auto;
   position: absolute;
-  top: 6px;
-  right: 28px;
+  top: 4px;
+  bottom: 16px;
+  left: 330px;
   width: 13px;
   /* くの字を山なりに見た時、左側の長さ */
   height: 13px;
@@ -393,7 +394,7 @@ li {
   width: 270px;
   height: 270px;
   background-color: #FFF;
-  margin: 0px 10px;
+  margin: 15px 10px;
   border-radius: 15px;
   padding: 5px 16px;
 }
